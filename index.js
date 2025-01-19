@@ -6,9 +6,10 @@ const passport = require("passport");
 const session = require("express-session");
 const cors = require("cors");
 const port = 3000;
-const apiKey = "7d04cbfc7fae66bb4af1d59915600030";
 const connection = require("./db.js");
 require("dotenv").config();
+
+console.log(process.env);
 
 // init app
 var app = express();
@@ -36,7 +37,7 @@ app.get("/", async (req, res) => {
 
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${randomPage}&language=cs-CZ`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API}&page=${randomPage}&language=cs-CZ`
     );
     const data = await response.json();
 
@@ -78,7 +79,7 @@ app.get("/movie/:id", async (req, res) => {
   const movieId = req.params.id;
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=cs-CZ`
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API}&language=cs-CZ`
     );
     const data = await response.json();
     res.json(data);
@@ -93,9 +94,9 @@ app.get("/movie/search/:name", async (req, res) => {
   console.log(`Searching for movie: ${movieName}`);
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-        movieName
-      )}&language=cs-CZ`
+      `https://api.themoviedb.org/3/search/movie?api_key=${
+        process.env.API
+      }&query=${encodeURIComponent(movieName)}&language=cs-CZ`
     );
     const data = await response.json();
 
