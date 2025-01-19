@@ -9,11 +9,9 @@ const port = 3000;
 const connection = require("./db.js");
 require("dotenv").config();
 
-console.log(process.env);
-
 // init app
 var app = express();
-app.use(cors({ origin: "https://filmy.merinsky.eu/", credentials: true }));
+app.use(cors({ origin: "https://filmy.merinsky.eu", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
