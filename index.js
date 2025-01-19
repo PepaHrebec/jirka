@@ -263,7 +263,7 @@ app.get("/search/liked", async (req, res) => {
       for (const movie of resp) {
         try {
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${movie.movie_id}?api_key=${apiKey}&language=cs-CZ`
+            `https://api.themoviedb.org/3/movie/${movie.movie_id}?api_key=${process.env.API}&language=cs-CZ`
           );
           const data = await response.json();
 
