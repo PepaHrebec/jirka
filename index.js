@@ -8,6 +8,7 @@ const cors = require("cors");
 const port = 3000;
 const apiKey = "7d04cbfc7fae66bb4af1d59915600030";
 const connection = require("./db.js");
+require("dotenv").config();
 
 // init app
 var app = express();
