@@ -13,7 +13,7 @@ console.log(process.env);
 
 // init app
 var app = express();
-app.use(cors({ origin: "http://localhost:8080", credentials: true }));
+app.use(cors({ origin: "https://filmy.merinsky.eu/", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -29,9 +29,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", async (req, res) => {
-  console.log("user: ", req.user);
-  console.log("cookies: ", req.cookies);
-
   const totalPages = 500;
   const randomPage = Math.floor(Math.random() * totalPages) + 1;
 
