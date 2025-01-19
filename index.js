@@ -11,13 +11,25 @@ require("dotenv").config();
 
 // init app
 var app = express();
-app.use(cors({ origin: "https://filmy.merinsky.eu", credentials: true }));
+app.use(
+  cors({
+    origin: "https://site-production-70c0.up.railway.app/",
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // init session
 app.use(
-  session({ secret: "supersecret", resave: false, saveUninitialized: false })
+  session({
+    secret: "supersecret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      domain: "",
+    },
+  })
 );
 
 // init strategies and passport
