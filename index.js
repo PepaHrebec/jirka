@@ -289,7 +289,7 @@ app.get("/search/liked", async (req, res) => {
           return res.status(500).send("Chyba při získávání dat o filmu");
         }
       }
-      console.log(moviesArray);
+      console.log("a", moviesArray);
 
       res.json(moviesArray); // Odeslání výsledného pole objektů
     }
