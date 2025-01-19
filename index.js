@@ -13,7 +13,7 @@ require("dotenv").config();
 var app = express();
 app.use(
   cors({
-    origin: "https://site-production-70c0.up.railway.app/",
+    origin: "https://site-production-70c0.up.railway.app",
     credentials: true,
   })
 );
